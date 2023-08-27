@@ -37,7 +37,7 @@ def decode_bbox(pred_hms, pred_whs, pred_offsets, confidence, cuda):
         pred_wh     = pred_whs[batch].permute(1, 2, 0).view([-1, 2])
         pred_offset = pred_offsets[batch].permute(1, 2, 0).view([-1, 2])
 
-        yv, xv      = torch.meshgrid(torch.arange(0, output_h), torch.arange(0, output_w))
+        yv, xv      = torch.meshgrid(torch.arange(0, output_h), torch.arange(0, output_w), indexing='ij')
         #-------------------------------------------------------------------------#
         #   xv              128*128,    特征点的x轴坐标
         #   yv              128*128,    特征点的y轴坐标
